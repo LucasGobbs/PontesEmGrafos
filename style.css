@@ -1,7 +1,96 @@
-html, body {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-canvas {
+
+html, body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  background-color: #dcdcdc;
+}
+
+main {
+  position: relative;
+  width: 50%;
+  height: 0;
+  padding-bottom: 50%;
+}
+
+main canvas {
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+body .form {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+body .form .field-input {
+  margin-bottom: 1rem;
+}
+
+body .form .field-input label {
+  font-family: 'Roboto', sans-serif;
+  color: #222;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+body .form .field-input input {
+  font-family: 'Roboto', sans-serif;
+  color: #777;
+  font-size: 1rem;
+  padding: 0.6rem;
+  width: 100%;
+  margin-top: 0.2rem;
+  border: none;
+}
+
+body .form .field-input input:focus {
+  outline: none;
+}
+
+body .form .field-button {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+body .form .field-button button {
+  width: 100%;
+  margin-right: 1rem;
+  padding: 0.8rem 0;
+  background-color:blueviolet;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+body .form .field-button button:hover {
+  filter: brightness(1.1)
+}
+
+body .form .field-button button:last-child {
+  margin-right: 0;
 }
