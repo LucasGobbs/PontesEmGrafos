@@ -17,6 +17,10 @@
         <label for="">Campo de Texto: </label>
         <input type="text">
       </div>
+      <div class="field-input">
+        <label for="">Arquivo: </label>
+        <input type="file" id="txtfiletoread">
+      </div>
       <div class="field-button">
         <button>
           Botão Único
@@ -31,6 +35,36 @@
         </button>
       </div>
     </div>
+
+    <script>
+      window.onload = function () {
+        //Check the support for the File API support
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            var fileSelected = document.getElementById('txtfiletoread');
+            fileSelected.addEventListener('change', function (e) {
+                var fileExtension = /json.*/;
+                var fileTobeRead = fileSelected.files[0];
+                if (fileTobeRead.type.match(fileExtension)) {
+                    var fileReader = new FileReader();
+                    fileReader.onload = function (e) {
+                        var fileContents = document.getElementById('filecontents');
+                        var string = e.target.result //valor em string do json 
+                        var json = JSON.parse(fileReader.result) //objeto
+                        console.log(string, json)
+                    }
+                    fileReader.readAsText(fileTobeRead);
+                }
+                else {
+                  alert("Por favor selecione arquivo json");
+                }
+
+            }, false);
+        }
+        else {
+          alert("Arquivo(s) não suportado(s)");
+        }
+      }
+    </script>
 
     <script src="sketch.js"></script>
     <script src="src/grafo.js"></script>
