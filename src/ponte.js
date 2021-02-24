@@ -18,7 +18,27 @@ class Ponte {
         this.dfs(grafo, v, v)
       }
     }
-   
+  }
+  dfs(grafo, u, v) {
+
+    this.pre[v] = this.cont++;
+    this.low[v] = this.pre[v];
+
+    if(!grafo.adj[v]){return}
+    for (let a of grafo.adj[v]) {
+      let w = a
+      if (this.pre[w] == -1) {
+        this.dfs(grafo, v, w)
+        
+        this.low[v] = Math.min(this.low[v], this.low[w])
+        
+        if (this.low[w] == this.pre[w]) {
+          grafo.ePonte(v,w)
+        }
+      } else if (w != u) {
+        this.low[v] = Math.min(this.low[v], this.pre[w]);
+      }
+    }  
   }
   calcular_descritivo(grafo){
     this.pontes = 0
@@ -36,8 +56,8 @@ class Ponte {
         this.dfs_descritivo(grafo, v, v)
       }
     }  
-                                                          alog('Pre', this.pre)
-                                                  alog('low: ', this.low)
+    alog('Pre: ', this.pre)
+    alog('low: ', this.low)
   }
   dfs_descritivo(grafo, u, v){
     console.log('\n================')
@@ -77,39 +97,7 @@ class Ponte {
       } else{
         console.log('\tCaminho já visitado\n')
       }
-    }  
-  
-  
-  }
-  dfs(grafo, u, v) {
-
-    this.pre[v] = this.cont++;
-    this.low[v] = this.pre[v];
-
-    
-    if(!grafo.adj[v]){return}
-   
-    for (let a of grafo.adj[v]) {
-
-      let w = a
-    
-      if (this.pre[w] == -1) {
-   
-        this.dfs(grafo, v, w)
-        
-        this.low[v] = Math.min(this.low[v], this.low[w])
-        
-        if (this.low[w] == this.pre[w]) {
-          grafo.ePonte(v,w)
-        }
-      } else if (w != u) {
-        this.low[v] = Math.min(this.low[v], this.pre[w]);
-      }
-    }  
+    }    
   }
   
-    
-  draw(grafo){
-    
-  }
 }

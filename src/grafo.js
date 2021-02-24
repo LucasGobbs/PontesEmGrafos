@@ -6,29 +6,13 @@ class Grafo{
   
     this.ponteAlgoritmo = new Ponte()
   }
-  calcular(){
-    this.arestas.forEach(element => {element.isPonte = false})
-    this.ponteAlgoritmo.calcular(this)
-  }
-  calcular_descritivo(){
-    this.arestas.forEach(element => {element.isPonte = false})
-    this.ponteAlgoritmo.calcular_descritivo(this)
-  }
-  random_nos(n){
-    for(let i = 0; i < n ; i++ ){
-     this.addNo(random() * width,random() * height)
-    }
-  }
-  random_no(){
-    return Math.floor(random()*this.nos.length)
-  }
   addNo(x,y){
     const max = this.nos.length
  
     this.nos.push(new No(max, x, y))
 
   }
-  
+
   addAresta(from, to){
     if(this.arestaJaExiste(from,to)){
       this.removeAresta(from,to)
@@ -64,6 +48,26 @@ class Grafo{
  
     this.adj[from] = this.adj[from].filter(element => element != to)
     this.adj[to] = this.adj[to].filter(element => element != from)
+  }
+
+
+  calcular(){
+    this.arestas.forEach(element => {element.isPonte = false})
+    this.ponteAlgoritmo.calcular(this)
+  }
+  calcular_descritivo(){
+    this.arestas.forEach(element => {element.isPonte = false})
+    this.ponteAlgoritmo.calcular_descritivo(this)
+  }
+
+
+  random_nos(n){
+    for(let i = 0; i < n ; i++ ){
+     this.addNo(random() * width,random() * height)
+    }
+  }
+  random_no(){
+    return Math.floor(random()*this.nos.length)
   }
   ePonte(from, to){
    
@@ -117,6 +121,19 @@ class Grafo{
         }
       })
     }))
+  }
+  fromJson(data){
+    this.nos = []
+    this.arestas = []
+    this.adj = []
+    this.ponteAlgoritmo = new Ponte()
+
+    data.nos.forEach(element => {
+      this.addNo(element.x,element.y)
+    })
+    data.arestas.forEach(element => {
+      this.addAresta(element.from, element.to)
+    })
   }
  
   selecionar_no(index){

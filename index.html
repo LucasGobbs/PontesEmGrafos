@@ -31,6 +31,7 @@
                         var fileContents = document.getElementById('filecontents');
                         var string = e.target.result //valor em string do json 
                         var json = JSON.parse(fileReader.result) //objeto
+                        grafo.fromJson(json)
                         console.log(string, json)
                     }
                     fileReader.readAsText(fileTobeRead);

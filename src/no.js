@@ -21,9 +21,6 @@ class No{
     text(`${this.index}`, this.x , this.y + 12)
   }
   update(){
-    
-
     this.overSize = 0
-    //console.log(this.overSize)
   }
 }
