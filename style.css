@@ -64,6 +64,22 @@ body .form .field-input input {
   border: none;
 }
 
+body .form .field-file label {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  color: #222;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 2px dashed rgb(145, 145, 145);
+  padding: 4rem 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+body .form .field-file input {
+  display: none;
+}
+
 body .form .field-input input:focus {
   outline: none;
 }
