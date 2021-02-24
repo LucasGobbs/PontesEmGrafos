@@ -8,8 +8,9 @@ class Aresta{
     console.log(`Aresta: ${this.from} - ${this.to}`)
   }
   draw(a,b){
+    strokeWeight(12)
     this.isPonte? stroke(0,255,0) : stroke(255,0,0);
-    strokeWeight(2)
+    
     line(a.x,a.y,b.x,b.y)
   }
 

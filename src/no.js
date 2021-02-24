@@ -1,31 +1,29 @@
 class No{
-  constructor(x,y){
+  constructor(index, x, y){
+    this.index = index
     this.x = x
     this.y = y
-    this.size = 25
+    this.size = 65
     this.overSize = 0
+    this.selecionado = false
+    this.selecionado_aresta = false
   }
-  draw(index){
-    stroke(0)
-    fill(255,0,0)
+  draw(){
+    strokeWeight(3)
+
+    this.selecionado_aresta ? stroke(255,255,0) : stroke(0)
+    this.selecionado ? fill(255,255,0) : fill(255,0,0)
     circle(this.x,this.y,this.size + this.overSize)
     
-    textSize(20);
+    stroke(0)
+    textSize(35);
     fill(255)
-    text(`${index}`, this.x - 5, this.y + 5)
+    text(`${this.index}`, this.x , this.y + 12)
   }
   update(){
-    const mouse = createVector(mouseX, mouseY)
-    const pos = createVector(this.x, this.y)
-    if(mouse.dist(pos) <= this.size){
-      this.overSize = 10
-      if(mouseIsPressed){
-        this.x = mouseX
-        this.y = mouseY
-      }
-    } else {
-      this.overSize = 0
-    }
+    
+
+    this.overSize = 0
     //console.log(this.overSize)
   }
 }
