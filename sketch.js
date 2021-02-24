@@ -2,7 +2,7 @@ let grafo;
 let ponte;
 let inputs;
 function setup() {
-  createCanvas(900, 600);
+  createCanvas(900, 900);
   strokeWeight(3)
   textAlign(CENTER);
   inputs = new InputWrapper()
