@@ -12,11 +12,27 @@ function setup() {
 
 function keyPressed() {
   if (keyCode === 67) {
+    // c
     grafo.calcular_descritivo()
   } 
-  
   if(keyCode === 88){
+    // x
     grafo.generate_json()
+  }
+  const value = 15
+  switch(keyCode){
+    case UP_ARROW:
+      grafo.nos.forEach(element => element.y -= value)
+      break;
+    case DOWN_ARROW:
+      grafo.nos.forEach(element => element.y += value)
+      break;
+    case RIGHT_ARROW:
+      grafo.nos.forEach(element => element.x += value)
+      break;
+    case LEFT_ARROW:
+      grafo.nos.forEach(element => element.x -= value)
+      break;
   }
 }
 function draw() {
